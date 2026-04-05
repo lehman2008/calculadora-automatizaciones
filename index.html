@@ -1,18 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Calculator</title>
-    <script>
-        function calculate() {
-            // Add calculator logic here
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time-Saving Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
         }
-    </script>
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #007BFF;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type='number'] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1>Simple Calculator</h1>
-    <input type="text" id="input1" />
-    <input type="text" id="input2" />
-    <button onclick="calculate()">Calculate</button>
-    <div id="result"></div>
+    <div class="container">
+        <h2>Time-Saving Calculator</h2>
+        <label for="originalTime">Original Time (hours)</label>
+        <input type="number" id="originalTime" required />
+
+        <label for="timeSaved">Time Saved (hours)</label>
+        <input type="number" id="timeSaved" required />
+
+        <button onclick="calculateSavings()">Calculate</button>
+
+        <h3 id="result"></h3>
+    </div>
+
+    <script>
+        function calculateSavings() {
+            const originalTime = parseFloat(document.getElementById('originalTime').value);
+            const timeSaved = parseFloat(document.getElementById('timeSaved').value);
+            
+            if (isNaN(originalTime) || isNaN(timeSaved)) {
+                alert('Please enter valid numbers.');
+                return;
+            }
+            
+            const timeAfterSavings = originalTime - timeSaved;
+            document.getElementById('result').innerText = `Time after savings: ${timeAfterSavings} hours`;
+        }
+    </script>
 </body>
 </html>
